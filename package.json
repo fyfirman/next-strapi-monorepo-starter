@@ -1,48 +1,27 @@
 {
-  "name": "next-strapi-tailwind-starter",
+  "name": "next-strapi-monorepo-starter",
+  "version": "1.0.0",
+  "description": "A starter pack to build website with Next.js + Strapi",
+  "repository": "https://github.com/fyfirman/next-strapi-monorepo-starter/",
+  "author": "Firmansyah Yanuar <fyfirman@gmail.com>",
+  "license": "MIT",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint \"**/*.{ts,tsx}\"",
-    "lint:fix": "eslint --fix \"**/*.{ts,tsx}\"",
-    "prepare": "husky install",
-    "test": "jest --watch"
-  },
-  "dependencies": {
-    "clsx": "^1.1.1",
-    "next": "12.0.8",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "tailwind-merge": "^1.2.0"
+    "install:web": "cd packages/web && yarn",
+    "dev:web": "cd packages/web && next dev",
+    "build:web": "cd packages/web && next build",
+    "start:web": "cd packages/web &&  next start",
+    "lint:web": "eslint \"packages/web/**/*.{ts,tsx}\"",
+    "lint:fix": "eslint --fix \"packages/web/**/*.{ts,tsx}\"",
+    "test:web": "cd packages/web && jest --watch",
+    "prepare": "husky install"
   },
   "devDependencies": {
-    "@babel/eslint-plugin": "^7.16.5",
-    "@commitlint/cli": "^14.1.0",
-    "@commitlint/config-conventional": "^14.1.0",
-    "@testing-library/jest-dom": "^5.16.1",
-    "@testing-library/react": "^12.1.2",
-    "@types/node": "17.0.10",
-    "@types/react": "17.0.38",
-    "@types/tailwindcss": "^2.2.4",
-    "autoprefixer": "^10.4.2",
-    "eslint": "^8.0.0",
-    "eslint-config-kentcdodds": "^20.0.1",
-    "eslint-config-next": "12.0.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-import-resolver-typescript": "^2.4.0",
-    "eslint-plugin-import": "^2.23.4",
-    "eslint-plugin-jest": "^25.3.4",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-react": "^7.24.0",
-    "husky": "^7.0.0",
-    "jest": "^27.4.7",
-    "postcss": "^8.4.5",
-    "prettier": "^2.4.1",
-    "tailwindcss": "^3.0.15",
-    "typescript": "4.5.4"
-  },
-  "version": "0.0.0"
+    "@commitlint/cli": "^16.0.2",
+    "@commitlint/config-conventional": "^16.0.0",
+    "husky": "^7.0.0"
+  }
 }
