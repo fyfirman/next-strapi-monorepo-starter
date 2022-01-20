@@ -45,7 +45,7 @@
   "settings": {
     "import/resolver": {
       "typescript": {
-        "project": "./tsconfig.json"
+        "project": "./packages/frontend/tsconfig.json"
       }
     }
   },
@@ -72,7 +72,7 @@
         "jest/valid-expect": "error",
         "jest/valid-describe": "warn"
       }
-    },
+    }
   ],
   "ignorePatterns": ["public/**/*.js"]
 }
