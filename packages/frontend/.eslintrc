@@ -74,5 +74,5 @@
       }
     }
   ],
-  "ignorePatterns": ["public/**/*.js"]
+  "ignorePatterns": ["public/**/*.js", "**/graphql.ts"]
 }
