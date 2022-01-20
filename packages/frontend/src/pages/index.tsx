@@ -2,11 +2,11 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { NextSeo } from "next-seo";
 import styles from "@styles/Home.module.css";
-import apolloClient from "~/lib/apollo-client";
-import { Query } from "~/@types/graphql";
-import { CONTENTS } from "~/graphql/content.operation";
+import { useContent } from "~/lib/content";
 
 const Home: NextPage = () => {
+  const { content } = useContent();
+
   return (
     <div className={styles.container}>
       <Head>
@@ -47,21 +47,34 @@ const Home: NextPage = () => {
             <li>Atomic Design</li>
           </ul>
         </div> */}
+        <div>
+          <h3>
+            This content managed by Strapi. Visit <a href="http://localhost:1337/admin">http://localhost:1337/admin</a>
+          </h3>
+          <table className="table-auto">
+            <thead className="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
+              <tr>
+                <th>Key</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.keys(content).map((key) => (
+                <tr key={key}>
+                  <td className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400 text-left">
+                    {key}
+                  </td>
+                  <td className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400 text-left">
+                    {content[key]}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </main>
     </div>
   );
 };
-
-export async function getServerSideProps() {
-  const { data } = await apolloClient.query<Query["contents"]>({
-    query: CONTENTS,
-  });
-
-  return {
-    props: {
-      data,
-    },
-  };
-}
 
 export default Home;
