@@ -5,20 +5,23 @@
   "repository": "https://github.com/fyfirman/next-strapi-monorepo-starter/",
   "author": "Firmansyah Yanuar <fyfirman@gmail.com>",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "install:web": "cd packages/web && yarn",
-    "dev:strapi": "cd packages/strapi && yarn dev",
-    "dev:web": "cd packages/web && yarn dev",
-    "build": "yarn dev:strapi || cd .. && yarn dev:web",
-    "build:strapi": "cd packages/strapi && yarn build",
-    "build:web": "cd packages/web && yarn build",
-    "start": "yarn dev:strapi || cd .. && yarn dev:web",
+    "install:strapi": "yarn --cwd packages/strapi",
+    "install:web": "yarn --cwd packages/web",
+    "install": "cross-env FORCE_COLOR=1 npm-run-all -l -p install:*",
+    "dev:strapi": "yarn --cwd packages/strapi dev",
+    "dev:web": "wait-on http://localhost:1337/admin && yarn --cwd packages/web dev",
+    "dev": "cross-env FORCE_COLOR=1 npm-run-all -l -p dev:*",
+    "build:strapi": "yarn --cwd packages/strapi build",
+    "build:web": "yarn --cwd packages/web build",
+    "build": "cross-env FORCE_COLOR=1 npm-run-all -l -s build:*",
     "start:strapi": "cd packages/strapi &&  yarn start",
     "start:web": "cd packages/web &&  yarn start",
+    "start": "cross-env FORCE_COLOR=1 npm-run-all -l -p start:*",
     "lint:web": "eslint \"packages/web/**/*.{ts,tsx}\"",
     "lint:web-fix": "eslint --fix \"packages/web/**/*.{ts,tsx}\"",
     "test:web": "cd packages/web && jest --watch",
@@ -27,6 +30,9 @@
   "devDependencies": {
     "@commitlint/cli": "^16.0.2",
     "@commitlint/config-conventional": "^16.0.0",
-    "husky": "^7.0.0"
+    "cross-env": "^7.0.3",
+    "husky": "^7.0.0",
+    "npm-run-all": "^4.1.5",
+    "wait-on": "^6.0.0"
   }
 }
