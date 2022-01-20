@@ -2,6 +2,9 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { NextSeo } from "next-seo";
 import styles from "@styles/Home.module.css";
+import apolloClient from "~/lib/apollo-client";
+import { Query } from "~/@types/graphql";
+import { CONTENTS } from "~/graphql/content.operation";
 
 const Home: NextPage = () => {
   return (
@@ -48,5 +51,17 @@ const Home: NextPage = () => {
     </div>
   );
 };
+
+export async function getServerSideProps() {
+  const { data } = await apolloClient.query<Query["contents"]>({
+    query: CONTENTS,
+  });
+
+  return {
+    props: {
+      data,
+    },
+  };
+}
 
 export default Home;
