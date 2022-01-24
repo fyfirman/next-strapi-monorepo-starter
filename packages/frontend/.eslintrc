@@ -51,6 +51,9 @@
       "typescript": {
         "project": "./packages/*/tsconfig.json"
       }
+    },
+    "next": {
+      "rootDir": "./packages/frontend/"
     }
   },
   "overrides": [
