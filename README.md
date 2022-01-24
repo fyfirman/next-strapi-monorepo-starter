@@ -1,7 +1,8 @@
-# Next Strapi Starter
+# next-strapi-monorepo-starter
 
-<!-- TODO : explain this project -->
+A starter pack to build website with Next.js + Strapi
 
-## Stack
-
-* Node v14-16
+<div align="center"> 
+⚠️ Under development ⚠️ <br/>
+⭐ Star to show support to developer ⭐
+</div>
