@@ -1,6 +1,6 @@
 {
   "name": "next-strapi-monorepo-starter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A starter pack to build website with Next.js + Strapi",
   "repository": "https://github.com/fyfirman/next-strapi-monorepo-starter/",
   "author": "Firmansyah Yanuar <fyfirman@gmail.com>",
