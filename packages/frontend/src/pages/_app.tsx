@@ -12,6 +12,7 @@ interface MyAppProps extends AppProps {
 }
 
 function MyApp(props: MyAppProps) {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment --  `pageProps` default variable from next is any.
   const { Component, content, pageProps } = props;
 
   return (
