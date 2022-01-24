@@ -25,17 +25,25 @@ function MyApp(props: MyAppProps) {
 }
 
 MyApp.getInitialProps = async () => {
-  const { data } = await apolloClient.query<Query>({
-    query: CONTENTS,
-  });
+  try {
+    const { data } = await apolloClient.query<Query>({
+      query: CONTENTS,
+    });
 
-  if (!data.contents) {
-    return;
+    if (!data.contents) {
+      return {
+        content: {},
+      };
+    }
+
+    return {
+      content: transformGraphQLResponseToObject(data.contents),
+    };
+  } catch (error: unknown) {
+    return {
+      content: {},
+    };
   }
-
-  return {
-    content: transformGraphQLResponseToObject(data.contents),
-  };
 };
 
 export default MyApp;
