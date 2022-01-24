@@ -42,22 +42,18 @@
     "testing-library/no-container": "off",
     "testing-library/no-node-access": "off"
   },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./packages/*/tsconfig.json"
+  },
   "settings": {
     "import/resolver": {
       "typescript": {
-        "project": "./packages/frontend/tsconfig.json"
+        "project": "./packages/*/tsconfig.json"
       }
     }
   },
   "overrides": [
-    {
-      "files": ["**/*.(d.)?ts(x)?"],
-      "parser": "@typescript-eslint/parser",
-      "parserOptions": {
-        "project": "./tsconfig.json"
-      },
-      "rules": {}
-    },
     {
       "files": ["**/*.test.ts(x)?"],
       "env": {

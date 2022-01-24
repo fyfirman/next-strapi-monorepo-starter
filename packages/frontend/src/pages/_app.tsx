@@ -1,17 +1,19 @@
 import "../styles/globals.css";
-import type { AppProps } from "next/app";
 import { ApolloProvider } from "@apollo/client";
-import apolloClient from "~/lib/apollo-client";
 import { ContentProvider } from "~/lib/content";
 import { CONTENTS } from "~/graphql/content.operation";
 import { Query } from "~/@types/graphql";
 import { StringHashMap, transformGraphQLResponseToObject } from "~/lib/content-utils";
+import apolloClient from "~/lib/apollo-client";
+import type { AppProps } from "next/app";
 
 interface MyAppProps extends AppProps {
   content: StringHashMap;
 }
 
-function MyApp({ Component, pageProps, content }: MyAppProps) {
+function MyApp(props: MyAppProps) {
+  const { Component, content, pageProps } = props;
+
   return (
     <ApolloProvider client={apolloClient}>
       <ContentProvider content={content}>
@@ -26,7 +28,7 @@ MyApp.getInitialProps = async () => {
     query: CONTENTS,
   });
 
-  if (!data) {
+  if (!data.contents) {
     return;
   }
 
