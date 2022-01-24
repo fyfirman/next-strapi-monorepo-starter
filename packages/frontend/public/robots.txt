@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://next-strapi-monorepo-starter.fyfirman.com
+
+# Sitemaps
+Sitemap: https://next-strapi-monorepo-starter.fyfirman.com/sitemap.xml
+Sitemap: https://next-strapi-monorepo-starter.fyfirman.com/sitemap-0.xml
